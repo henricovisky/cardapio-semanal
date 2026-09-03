@@ -43,7 +43,7 @@
   .arrow-btn{cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--foreground);border-radius:9px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center}
   .arrow-btn:hover{background:var(--border)}
   .arrow-btn svg{width:16px;height:16px}
-  .week-pills{flex:1;grid-template-columns:repeat(5,1fr);gap:7px;display:grid}
+  .week-pills{flex:1;grid-template-columns:repeat(7,1fr);gap:7px;display:grid}
   .week-pills button{cursor:pointer;border:1px solid var(--border);color:#668075;background:#fff;border-radius:13px;padding:10px 6px;transition:all .2s}
   .week-pills button span,.week-pills small{display:block}
   .week-pills button span{font-size:12px;font-weight:800}
@@ -120,7 +120,7 @@
       </div>
       <div class="header-pill">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 2v3M16 2v3M3 9h18M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01M16 17h.01"/></svg>
-        Segunda a sexta
+        Segunda a domingo
       </div>
     </div>
   </header>
@@ -176,8 +176,8 @@
         </div>
       </div>
       <div class="restrictions">
-        <span>Restrições do plano</span>
-        <b>Sem amendoim, gergelim, ameixa e mamão.</b>
+        <span>Regras do plano</span>
+        <b>Carboidrato travado: chia/aveia/linhaça na tapioca e cuscuz. Feijão com remolho de 12h. Alho e cebola só refogados. Conservas em óleo totalmente escorrido. Frutas com casca/fibras.</b>
       </div>
     </aside>
   </div>
@@ -195,56 +195,84 @@ const ICONS = {
 };
 const CARDAPIO = [
  {short:'SEG',label:'Segunda-feira',meals:[
-   {label:'Café da manhã',icon:'cafe',items:['½ xícara de café com leite desnatado (adoce com Stévia)','2 fatias de pão integral','1 ovo mexido']},
-   {label:'Lanche da manhã',icon:'lanche',items:['1 pera média','1 colher (sopa) de chia','8 castanhas de caju']},
-   {label:'Almoço',icon:'almoco',items:['Salada crua (alface e tomate) + 1 colher (sopa) de azeite','1 colher de servir de arroz integral + 1 concha de feijão','2 pedaços médios de frango grelhado','1 kiwi']},
-   {label:'Lanche da tarde',icon:'lanche',items:['Panqueca de banana: 1 ovo + 1 banana + 1 colher (sopa) de farelo de aveia + canela']},
-   {label:'Jantar',icon:'jantar',items:['Crepioca: 1 ovo + 1 colher (sopa) de goma + 1 colher de aveia, recheada com frango desfiado e verduras']}]},
+   {label:'Café da manhã',icon:'cafe',items:['Cuscuz nordestino funcional: 5 colh. (sopa) de flocão + 1 colh. (sopa) de chia na massa','2 fatias de queijo coalho light grelhado','½ xícara de café com leite desnatado (adoçado com stévia/xilitol)']},
+   {label:'Lanche da manhã',icon:'lanche',items:['1 fruta permitida (maçã, pera, kiwi ou goiaba) salpicada com chia ou farelo de aveia','8 castanhas de caju torradas sem sal OU 2 castanhas-do-pará OU 2 colh. (sopa) de amendoim natural']},
+   {label:'Almoço',icon:'almoco',items:['Salada crua de alface americana, rúcula e pepino + 1 colh. (sopa) de azeite','1 colh. de servir de arroz parboilizado + 1 concha de feijão carioca (remolho 12h)','2 pedaços médios de peito de frango em iscas com açafrão, cebola refogada e tomate','Legumes: 2 colh. (sopa) de abobrinha no vapor com orégano','Sobremesa: 1 kiwi']},
+   {label:'Lanche da tarde',icon:'lanche',items:['Panqueca de banana funcional: 1 banana + 1 ovo + 1 colh. (sopa) de farelo de aveia + 1 colh. (chá) de canela, em fogo baixo']},
+   {label:'Jantar',icon:'jantar',items:['Crepioca fit: 1 ovo + 1 colh. (sopa) de goma + 1 colh. (sopa) de farelo de aveia','Recheio: 4 colh. (sopa) de atum no óleo (escorrido), cebola refogada e tomate']}]},
  {short:'TER',label:'Terça-feira',meals:[
-   {label:'Café da manhã',icon:'cafe',items:['1 copo de leite desnatado','1 tapioca (3 colheres de goma + 1 colher de farelo de aveia)','2 fatias de queijo branco']},
-   {label:'Lanche da manhã',icon:'lanche',items:['1 maçã Fuji pequena','1 colher (sopa) de farelo de aveia','2 castanhas-do-pará']},
-   {label:'Almoço',icon:'almoco',items:['Salada cozida (cenoura e vagem) + 1 colher de azeite','3 garfadas de macarrão integral + 1 concha de feijão','2 pedaços de peixe grelhado','1 tangerina']},
-   {label:'Lanche da tarde',icon:'lanche',items:['1 espiga de milho cozido']},
-   {label:'Jantar',icon:'jantar',items:['Sopa ou caldo de frango com legumes (1 prato fundo)']}]},
+   {label:'Café da manhã',icon:'cafe',items:['2 fatias de pão 100% integral tostadas com pasta de ricota (azeite, orégano, ervas finas)','1 ovo cozido ou pochê com pitada de açafrão','Café puro com gotas de stévia']},
+   {label:'Lanche da manhã',icon:'lanche',items:['1 fruta permitida salpicada com chia ou farelo de aveia','8 castanhas de caju OU 2 castanhas-do-pará OU 2 colh. (sopa) de amendoim natural']},
+   {label:'Almoço',icon:'almoco',items:['Salada de acelga, tomate e rabanete no azeite extravirgem e limão','3 garfadas de macarrão integral ao dente com molho de tomate caseiro e manjericão','2 filés médios de tilápia grelhados com azeite, alecrim e raspas de limão','Legumes: 4 colh. (sopa) de chuchu refogado com salsinha','Sobremesa: 1 rodela média de abacaxi']},
+   {label:'Lanche da tarde',icon:'lanche',items:['1 espiga média de milho cozido (com pitada de sal, sem margarina)','1 copo de água aromatizada com hortelã']},
+   {label:'Jantar',icon:'jantar',items:['Sopa aveludada de frango com legumes: caldo de peito de frango desfiado com cenoura, chuchu e abobrinha, finalizada com cheiro-verde']}]},
  {short:'QUA',label:'Quarta-feira',meals:[
-   {label:'Café da manhã',icon:'cafe',items:['½ xícara de café com leite desnatado','5 colheres de cuscuz cozido (com 1 colher de chia)','3 colheres (sopa) de frango desfiado']},
-   {label:'Lanche da manhã',icon:'lanche',items:['1 fatia média de melão','1 colher (sopa) de chia','8 castanhas de caju']},
-   {label:'Almoço',icon:'almoco',items:['Salada crua (rúcula e tomate) + 1 colher de azeite','1 colher de servir de arroz parboilizado + 1 concha de feijão','2 pedaços de lombo suíno magro','1 rodela de abacaxi']},
-   {label:'Lanche da tarde',icon:'lanche',items:['Vitamina de frutas (300 ml de bebida vegetal com morangos e 1 colher de aveia)']},
-   {label:'Jantar',icon:'jantar',items:['Omelete: 2 ovos + 1 colher de aveia + verduras à vontade']}]},
+   {label:'Café da manhã',icon:'cafe',items:['Tapioca funcional: 3 colh. (sopa) de goma + 1 colh. (sopa) de farinha de linhaça dourada','Recheio: 3 colh. (sopa) de frango cozido desfiado com alho-poró e tomate','1 copo (200ml) de bebida vegetal de amêndoas/castanhas sem açúcar']},
+   {label:'Lanche da manhã',icon:'lanche',items:['1 fruta permitida salpicada com chia ou farelo de aveia','8 castanhas de caju OU 2 castanhas-do-pará OU 2 colh. (sopa) de amendoim natural']},
+   {label:'Almoço',icon:'almoco',items:['Salada de alface roxa, espinafre baby e alho-poró temperada com azeite','1 colh. de servir de arroz integral + 1 concha de feijão preto (remolho 12h)','2 bifes médios de lombo suíno magro grelhados com limão, alho refogado e páprica','Legumes: 2 colh. (sopa) de abóbora cabotiá cozida','Sobremesa: 1 tangerina pequena']},
+   {label:'Lanche da tarde',icon:'lanche',items:['Vitamina cremosa: 300ml de bebida vegetal com 8 morangos e 1 colh. (sopa) de farelo de aveia']},
+   {label:'Jantar',icon:'jantar',items:['Wrap integral: 1 disco de Rap 10 integral levemente aquecido','Recheio: 4 colh. (sopa) de carne moída magra (patinho) com cebola, pimentão amarelo e alface']}]},
  {short:'QUI',label:'Quinta-feira',meals:[
-   {label:'Café da manhã',icon:'cafe',items:['1 copo de leite desnatado','2 fatias de pão integral','2 fatias de queijo coalho light']},
-   {label:'Lanche da manhã',icon:'lanche',items:['1 goiaba com casca','1 colher (sopa) de farelo de aveia','2 castanhas-do-pará']},
-   {label:'Almoço',icon:'almoco',items:['Salada crua ou cozida (alface, brócolis e cenoura) + azeite','3 garfadas de macarrão integral + 1 concha de feijão','2 pedaços de frango grelhado','1 kiwi']},
-   {label:'Lanche da tarde',icon:'lanche',items:['Panqueca de banana: 1 banana + 1 ovo + 1 colher de aveia + canela']},
-   {label:'Jantar',icon:'jantar',items:['Rap 10 integral recheado com atum em conserva (no óleo) e verduras']}]},
+   {label:'Café da manhã',icon:'cafe',items:['Ovos mexidos com espinafre: 2 ovos + ½ xícara de espinafre picado + 1 pitada de cúrcuma','1 fatia de pão 100% integral tostada','½ xícara de café puro com leite desnatado']},
+   {label:'Lanche da manhã',icon:'lanche',items:['1 fruta permitida salpicada com chia ou farelo de aveia','8 castanhas de caju OU 2 castanhas-do-pará OU 2 colh. (sopa) de amendoim natural']},
+   {label:'Almoço',icon:'almoco',items:['Salada refrescante: pepino, tomate e acelga no azeite e vinagre de maçã','1 colh. de servir de arroz parboilizado + 1 concha de feijão carioca','4 colh. (sopa) de carne moída (patinho) refogada com vagem picadinha e noz-moscada','Legumes: 4 colh. (sopa) de cenoura no vapor com cheiro-verde','Sobremesa: 1 fatia média de mamão formosa com chia']},
+   {label:'Lanche da tarde',icon:'lanche',items:['Coquetel laxativo: ½ mamão papaia + 2 ameixas secas hidratadas + ½ laranja com bagaço + 1 colh. (sopa) de farelo de aveia + 50ml de Yakult/iogurte desnatado batido com gelo']},
+   {label:'Jantar',icon:'jantar',items:['Omelete verde: 2 ovos + 1 colh. (sopa) de farelo de aveia, abobrinha ralada, queijo minas frescal light e orégano']}]},
  {short:'SEX',label:'Sexta-feira',meals:[
-   {label:'Café da manhã',icon:'cafe',items:['½ xícara de café com leite desnatado','1 tapioca (3 colheres de goma + 1 colher de linhaça dourada)','1 ovo cozido']},
-   {label:'Lanche da manhã',icon:'lanche',items:['12 morangos','1 colher (sopa) de chia','8 castanhas de caju']},
-   {label:'Almoço',icon:'almoco',items:['Salada crua (alface e pepino) + 1 colher de azeite','1 colher de servir de arroz integral + 1 concha de feijão','2 pedaços de peixe grelhado','1 tangerina']},
-   {label:'Lanche da tarde',icon:'lanche',items:['1 espiga de milho cozido']},
-   {label:'Jantar',icon:'jantar',items:['Sopa ou caldo de peixe ou carne com legumes (1 prato fundo)']}]}
+   {label:'Café da manhã',icon:'cafe',items:['Cuscuz com aveia: 5 colh. (sopa) de flocão + 1 colh. (sopa) de farelo de aveia na massa','2 fatias de queijo branco (minas frescal light ou ricota)','½ xícara de café coado com gotas de stévia']},
+   {label:'Lanche da manhã',icon:'lanche',items:['1 fruta permitida salpicada com chia ou farelo de aveia','8 castanhas de caju OU 2 castanhas-do-pará OU 2 colh. (sopa) de amendoim natural']},
+   {label:'Almoço',icon:'almoco',items:['Salada crua de rúcula, alface crespa e rabanetes + 1 colh. (sopa) de azeite','1 colh. de servir de arroz integral + 1 concha de feijão','2 pedaços médios de sobrecoxa de frango sem pele assada com ervas, alho-poró e tomate cereja','Legumes: 2 colh. (servir) de quiabo grelhado bem sequinho com alho','Sobremesa: 1 maçã pequena com casca']},
+   {label:'Lanche da tarde',icon:'lanche',items:['1 banana-prata amassada + 1 colh. (sopa) de chia + 1 colh. (sopa) de amendoim torrado moído']},
+   {label:'Jantar',icon:'jantar',items:['Prato quente proteico: 1 lata de sardinha no óleo (escorrido) refogada com cebola, tomate e orégano, com salada morna de chuchu e vagem no azeite']}]},
+ {short:'SÁB',label:'Sábado',meals:[
+   {label:'Café da manhã',icon:'cafe',items:['Tapioca proteica: 3 colh. (sopa) de goma + 1 colh. (sopa) de chia','Recheio: 1 ovo mexido úmido com 1 fatia de queijo coalho light','Café coado ou bebida vegetal pura']},
+   {label:'Lanche da manhã',icon:'lanche',items:['1 fruta permitida com chia ou farelo de aveia','8 castanhas de caju OU 2 castanhas-do-pará OU 2 colh. (sopa) de amendoim natural']},
+   {label:'Almoço',icon:'almoco',items:['Salada de folhas verdes variadas com azeite e limão','3 garfadas de macarrão integral salteado no alho-poró com tomatinhos','2 postas de peixe branco (pescada ou tilápia) assadas com tomate, pimentão e azeitonas','Legumes: 2 colh. (sopa) de abobrinha e cenoura raladas salteadas','Sobremesa: 1 laranja inteira com o bagaço']},
+   {label:'Lanche da tarde',icon:'lanche',items:['Vitamina digestiva: 250ml de leite desnatado ou vegetal com ¼ de abacate, 1 colh. (sopa) de farelo de aveia e gelo']},
+   {label:'Jantar',icon:'jantar',items:['Sanduíche leve no Rap 10 integral: frango desfiado, ricota temperada, rúcula e tomate']}]},
+ {short:'DOM',label:'Domingo',meals:[
+   {label:'Café da manhã',icon:'cafe',items:['2 fatias de pão 100% integral chapeadas com 2 fatias de queijo branco (minas frescal ou ricota) e orégano','1 fatia fina de mamão papaia','½ xícara de café puro ou com leite desnatado']},
+   {label:'Lanche da manhã',icon:'lanche',items:['1 fruta permitida com chia ou farelo de aveia','8 castanhas de caju OU 2 castanhas-do-pará OU 2 colh. (sopa) de amendoim natural']},
+   {label:'Almoço',icon:'almoco',items:['Salada crua: broto de feijão, pimentão amarelo, alface americana e pepino com azeite','1 colh. de servir de arroz parboilizado ou integral + 1 concha de feijão fresco','2 bifes médios de filé mignon suíno ou patinho em tiras com cebola bem refogada e cheiro-verde','Legumes: 2 colh. (sopa) de abóbora cabotiá assada com alecrim e azeite','Sobremesa: 2 fatias médias de melão espanhol']},
+   {label:'Lanche da tarde',icon:'lanche',items:['Panqueca de banana clássica: 1 banana + 1 ovo + 1 colh. (sopa) de farelo de aveia + canela, tostada dos dois lados']},
+   {label:'Jantar',icon:'jantar',items:['Caldo termogênico digestivo: sopa de cenoura, abobrinha e chuchu em caldo caseiro de carne magra, temperada com açafrão, páprica e salsinha']}]}
 ];
 
-// Quantidade semanal de cada ingrediente (semana = Seg a Sex). Mensal = ×4.
+// Quantidade semanal de cada ingrediente (semana = 7 dias, baseada na lista de compras).
+// Mensal = ×4 semanas.
 const INGREDIENTES = [
- ['Ovos','7 un','28 un'],['Frango grelhado','4 pedaços','16 pedaços'],
- ['Frango desfiado','4 colh. (sopa)','16 colh. (sopa)'],['Lombo suíno magro','2 pedaços','8 pedaços'],
- ['Peixe grelhado','4 pedaços','16 pedaços'],['Atum em conserva','1 lata','4 latas'],
- ['Queijo (branco/coalho)','4 fatias','16 fatias'],['Pão integral','4 fatias','16 fatias'],
- ['Arroz integral','2 colh. de servir','8 colh. de servir'],['Arroz parboilizado','1 colh. de servir','4 colh. de servir'],
- ['Macarrão integral','6 garfadas','24 garfadas'],['Feijão','5 conchas','20 conchas'],
- ['Cuscuz cozido','5 colh. (sopa)','20 colh. (sopa)'],['Tapioca (goma)','7 colh. (sopa)','28 colh. (sopa)'],
- ['Rap 10 integral','1 un','4 un'],['Aveia / farelo de aveia','8 colh. (sopa)','32 colh. (sopa)'],
- ['Linhaça dourada','1 colh. (sopa)','4 colh. (sopa)'],['Milho cozido','2 espigas','8 espigas'],
- ['Leite desnatado','2 copos (200 ml)','8 copos (200 ml)'],['Café com leite desnatado','3 × ½ xícara','12 × ½ xícara'],
- ['Bebida vegetal','300 ml','1,2 L'],['Banana','2 un','8 un'],['Kiwi','2 un','8 un'],
- ['Maçã','1 un','4 un'],['Tangerina','2 un','8 un'],['Pera','1 un','4 un'],
- ['Goiaba','1 un','4 un'],['Melão','1 fatia','4 fatias'],['Abacaxi','1 rodela','4 rodelas'],
- ['Morango','12 un','48 un'],['Salada / verduras','5 porções','20 porções'],
- ['Tomate','2 un','8 un'],['Azeite','5 colh. (sopa)','20 colh. (sopa)'],
- ['Chia','4 colh. (sopa)','16 colh. (sopa)'],['Castanha de caju','24 un','96 un'],
- ['Castanha-do-pará','4 un','16 un'],['Canela','2 pitadas','8 pitadas']
+ // Hortifrúti
+ ['Folhas verdes (acelga, rúcula, alfaces, espinafre)','~5 maços','~20 maços'],
+ ['Abobrinha italiana','3 un','12 un'],['Chuchu','2 un','8 un'],['Cenoura média','4 un','16 un'],
+ ['Vagem macarrão','200g','800g'],['Abóbora cabotiá','400g','1,6 kg'],['Quiabo fresco','200g','800g'],
+ ['Rabanete','1 maço','4 maços'],['Alho-poró','1 talo','4 talos'],['Pepino','3 un','12 un'],
+ ['Pimentão amarelo','2 un','8 un'],['Tomate salada','1 kg','4 kg'],
+ ['Banana-prata','1 dúzia','4 dúzias'],['Maçã fuji/argentina','5 un','20 un'],['Kiwi','4 un','16 un'],
+ ['Laranja para mesa','6 un','24 un'],['Abacaxi pérola','1 un','4 un'],['Mamão papaia','2 un','8 un'],
+ ['Mamão formosa','1 un','4 un'],['Tangerina (ponkan/murcott)','4 un','16 un'],['Morango fresco','1 bandeja','4 bandejas'],
+ ['Abacate médio','1 un','4 un'],['Melão espanhol','1 un','4 un'],['Limão taiti','6 un','24 un'],
+ ['Ervas frescas (cheiro-verde, alecrim, hortelã)','1 kit','4 kits'],
+ // Açougue & peixaria
+ ['Peito de frango em filé','1 kg','4 kg'],['Sobrecoxa de frango sem pele','500g','2 kg'],
+ ['Carne bovina moída magra (patinho)','800g','3,2 kg'],['Lombo/filé mignon suíno','600g','2,4 kg'],
+ ['Filé de tilápia ou pescada branca','800g','3,2 kg'],
+ // Laticínios, ovos & conservas
+ ['Ovos','2–3 cartelas (24–36)','8–12 cartelas'],['Queijo coalho light','400g','1,6 kg'],
+ ['Queijo minas frescal light / ricota','400g','1,6 kg'],['Leite desnatado OU bebida vegetal','2 litros','8 litros'],
+ ['Yakult ou iogurte natural desnatado','6 un / 2 potes','24 un / 8 potes'],['Sardinha em conserva no óleo','2 latas','8 latas'],
+ ['Atum sólido em conserva no óleo','2 latas','8 latas'],
+ // Mercearia, fibras & grãos
+ ['Pão de forma 100% integral','1 pacote','4 pacotes'],['Rap 10 integral','10 unidades','40 unidades'],
+ ['Flocão de milho (cuscuz)','1 pacote','4 pacotes'],['Goma de mandioca (tapioca)','1 pacote','4 pacotes'],
+ ['Farelo de aveia','250g','1 kg'],['Farelo de trigo','1 pacote pequeno','4 pacotes'],
+ ['Sementes de chia','200g','800g'],['Sementes de linhaça dourada','200g','800g'],['Sementes de gergelim','100g','400g'],
+ ['Castanha de caju torrada sem sal','150g','600g'],['Castanha-do-pará','100g','400g'],['Ameixa seca','150g','600g'],
+ ['Arroz parboilizado','1 kg','4 kg'],['Arroz integral','1 kg','4 kg'],['Macarrão 100% integral','500g','2 kg'],
+ ['Feijão carioca','1 kg','4 kg'],['Feijão preto','1 kg','4 kg'],['Milho verde em espiga','2–3 espigas','8–12 espigas'],
+ // Temperos & especiarias
+ ['Azeite de oliva extravirgem','1 garrafa','4 garrafas'],['Açafrão-da-terra (cúrcuma)','1 un','4 un'],
+ ['Páprica doce','1 un','4 un'],['Canela em pó','1 un','4 un'],['Noz-moscada','1 un','4 un'],
+ ['Orégano e ervas finas','1 kit','4 kits'],['Adoçante 100% stévia ou xilitol','1 un','4 un']
 ];
 
 // ===== RENDER =====
@@ -282,7 +310,7 @@ function renderWeek(){
 }
 function renderIng(period){
   const col = period==='mensal'?2:1;
-  const title = period==='mensal'?'Ingredientes — Mensal (×4 semanas)':'Ingredientes — Semanal (Seg a Sex)';
+  const title = period==='mensal'?'Ingredientes — Mensal (×4 semanas)':'Ingredientes — Semanal (Seg a Dom)';
   $("#ingContent").innerHTML = `
     <div class="ing-panel active">
       <table class="ing-table">
@@ -297,8 +325,8 @@ function renderIng(period){
 
 // ===== NAVEGAÇÃO =====
 let cur = new Date().getDay();          // 0=Dom ... 6=Sáb
-cur = (cur>=1&&cur<=5)?cur-1:0;         // Seg=0 ... Sex=4 (fim de semana -> Seg)
-const isToday = new Date().getDay()>=1 && new Date().getDay()<=5;
+cur = (cur>=0&&cur<=6)?((cur+6)%7):0;    // Seg=0 ... Dom=6
+const isToday = new Date().getDay()>=0 && new Date().getDay()<=6;
 $('#heroTag').textContent = isToday ? 'Seu plano para hoje' : 'Seu plano alimentar';
 $('#todayNote').textContent = isToday?'Hoje':'';
 renderPills(cur); renderDay(cur); renderWeek(); renderIng('semanal');
@@ -318,8 +346,8 @@ document.querySelectorAll('.ing-toggles button').forEach(b=>{
     b.classList.add('active'); renderIng(b.dataset.period);
   };
 });
-$('#prevDay').onclick=()=>{ cur=(cur+4)%5; renderPills(cur); renderDay(cur); };
-$('#nextDay').onclick=()=>{ cur=(cur+1)%5; renderPills(cur); renderDay(cur); };
+$('#prevDay').onclick=()=>{ cur=(cur+CARDAPIO.length-1)%CARDAPIO.length; renderPills(cur); renderDay(cur); };
+$('#nextDay').onclick=()=>{ cur=(cur+1)%CARDAPIO.length; renderPills(cur); renderDay(cur); };
 </script>
 </body>
 </html>
